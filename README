@@ -30,13 +30,9 @@ OPTIONS
               a bar
 
 
-       -l COLUMNO
-              use string from column number COLUMNO  (starting  at  0)  to
-              print a label
-
-
-       -f INPUTFILE
-              read data from INPUTFILE instead of STDIN
+       -c BARCHAR
+              use BARCHAR instead of "|" to draw the bars.  BARCHAR  be  a
+              single character.
 
 
        -d DELIMITER
@@ -44,9 +40,13 @@ OPTIONS
               data
 
 
-       -c BARCHAR
-              use BARCHAR instead of "|" to draw the bars.  BARCHAR  be  a
-              single character.
+       -f INPUTFILE
+              read data from INPUTFILE instead of STDIN
+
+
+       -l COLUMNO
+              use string from column number COLUMNO  (starting  at  0)  to
+              print a label
 
 
        -w WIDTH

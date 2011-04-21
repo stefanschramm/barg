@@ -16,17 +16,17 @@ barg processes data in CSV format an outputs simple bar graphs as ASCII graphics
 .IP "-b COLUMNO"
 use data from column number COLUMNO (starting at 0) to draw a bar
 
-.IP "-l COLUMNO"
-use string from column number COLUMNO (starting at 0) to print a label
-
-.IP "-f INPUTFILE"
-read data from INPUTFILE instead of STDIN
+.IP "-c BARCHAR"
+use BARCHAR instead of "|" to draw the bars. BARCHAR be a single character.
 
 .IP "-d DELIMITER"
 use DELIMITER instead of Tab as field delimiter when reading data
 
-.IP "-c BARCHAR"
-use BARCHAR instead of "|" to draw the bars. BARCHAR be a single character.
+.IP "-f INPUTFILE"
+read data from INPUTFILE instead of STDIN
+
+.IP "-l COLUMNO"
+use string from column number COLUMNO (starting at 0) to print a label
 
 .IP "-w WIDTH"
 Don't use automatically determined terminal width to scale the graphs but limit the output width to WIDTH characters.
