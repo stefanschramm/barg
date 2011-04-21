@@ -1,0 +1,39 @@
+.\" Process this file with
+.\" groff -man -Tascii barg.1
+.\" or view with man -l barg.1
+.TH barg 1 "APRIL 2011"
+
+.SH NAME
+barg \- create simple ASCII bar graphs from CSV data
+
+.SH SYNOPSIS
+barg [OPTIONS]
+
+.SH DESCRIPTION
+barg processes data in CSV format an outputs simple bar graphs as ASCII graphics. The option -b COLUMNO specifies which column number contains the (numerical) data used to draw the bars. barg will determine the maximum value of this column and will scale all bars relatively to this maximum. It is also possible to print a text next to each bar with the -l COLUMNO option. In this case COLUMNO can be the number of a column, either containing some arbitrary string (like a label for this bar) or the same column used for the -b option to print the numeric value. The -b COLUMNO and -l COLUMNO options can be used multiple times and the output of these labels/bars will be in the order as the options were specified.
+
+.SH OPTIONS
+.IP "-b COLUMNO"
+use data from column number COLUMNO (starting at 0) to draw a bar
+
+.IP "-l COLUMNO"
+use string from column number COLUMNO (starting at 0) to print a label
+
+.IP "-f INPUTFILE"
+read data from INPUTFILE instead of STDIN
+
+.IP "-d DELIMITER"
+use DELIMITER instead of Tab as field delimiter when reading data
+
+.IP "-c BARCHAR"
+use BARCHAR instead of "|" to draw the bars. BARCHAR be a single character.
+
+.IP "-w WIDTH"
+Don't use automatically determined terminal width to scale the graphs but limit the output width to WIDTH characters.
+
+.SH EXAMPLES
+You can find examples on how to use barg at the wiki: https://github.com/stefanschramm/barg/wiki
+
+.SH AUTHOR
+Stefan Schramm <mail@stefanschramm.net>
+
