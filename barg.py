@@ -68,6 +68,7 @@ def terminal_size():
 filename = None
 delimiter = "\t"
 barchar = "|"
+autodetect = False
 (con_height, con_width) = terminal_size()
 
 bars = []
@@ -111,6 +112,10 @@ while True:
             continue
         except StopIteration:
             sys.exit("Missing argument for -c (bar character)")
+    if arg == '-a':
+        # use autodetection
+        autodetect = True
+        continue
     if arg == '-b':
         # bar
         try:
@@ -142,12 +147,36 @@ if filename != None and filename != "-":
 else:
     lines = sys.stdin
 
-# get maximum values, lengths and collect data
+# read lines
 data = []
-max_bar_value = {}
-max_label_length = {}
 for line in lines:
     fields = line.rstrip().split(delimiter)
+    data.append(fields)
+
+# autodetection of columntypes
+if autodetect:
+    if labels != [] or bars != []:
+        sys.exit("Error: Cannot use -a (autodetection) in combination with -l or -b.")
+    labels = []
+    bars = []
+    numeric = range(0,len(data[0]))
+    for fields in data:
+        for i in numeric:
+            try:
+                float(fields[i])
+            except ValueError:
+                numeric.remove(i)
+    for i in range(0,len(data[0])):
+        columntypes.append("l")
+        labels.append(i)
+        if i in numeric:
+            columntypes.append("b")
+            bars.append(i)
+
+# get maximum values and lengths
+max_bar_value = {}
+max_label_length = {}
+for fields in data:
     for bar in bars:
         try:
             if not max_bar_value.has_key(bar) or float(fields[bar]) > max_bar_value[bar]:
@@ -163,7 +192,6 @@ for line in lines:
                 max_label_length[label] = len(fields[label])
         except IndexError:
             sys.exit("IndexError: Column " + str(label) + " doesn't seem to exist.")
-    data.append(fields)
 
 max_label_length_sum = reduce(lambda s, l: s + max_label_length[l] + 1, labels, 0)
 
