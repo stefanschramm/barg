@@ -25,9 +25,20 @@ DESCRIPTION
 
 
 OPTIONS
+       -a     autodetect  columns for labels and bars (each column will be
+              used either as label-bar-combination if it's numerical or as
+              label otherwise) -a cannot be used in combination with -b or
+              -l
+
+
        -b COLUMNO
-              use  data from column number COLUMNO (starting at 0) to draw
+              use data from column number COLUMNO (starting at 0) to  draw
               a bar
+
+
+       -l COLUMNO
+              use  string  from  column  number COLUMNO (starting at 0) to
+              print a label
 
 
        -c BARCHAR
@@ -44,18 +55,13 @@ OPTIONS
               read data from INPUTFILE instead of STDIN
 
 
-       -l COLUMNO
-              use string from column number COLUMNO  (starting  at  0)  to
-              print a label
-
-
        -w WIDTH
-              Don't  use  automatically determined terminal width to scale
+              Don't use automatically determined terminal width  to  scale
               the graphs but limit the output width to WIDTH characters.
 
 
 EXAMPLES
-       You  can  find  examples  on  how  to  use  barg   at   the   wiki:
+       You   can   find   examples  on  how  to  use  barg  in  the  wiki:
        https://github.com/stefanschramm/barg/wiki
 
 
